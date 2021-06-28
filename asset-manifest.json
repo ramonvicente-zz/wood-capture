@@ -1,25 +1,23 @@
 {
   "files": {
-    "main.css": "/wood-capture/static/css/main.0201f0ca.chunk.css",
-    "main.js": "/wood-capture/static/js/main.9925a875.chunk.js",
-    "main.js.map": "/wood-capture/static/js/main.9925a875.chunk.js.map",
-    "runtime-main.js": "/wood-capture/static/js/runtime-main.91948bdd.js",
-    "runtime-main.js.map": "/wood-capture/static/js/runtime-main.91948bdd.js.map",
-    "static/css/2.800be05e.chunk.css": "/wood-capture/static/css/2.800be05e.chunk.css",
-    "static/js/2.8acfd099.chunk.js": "/wood-capture/static/js/2.8acfd099.chunk.js",
-    "static/js/2.8acfd099.chunk.js.map": "/wood-capture/static/js/2.8acfd099.chunk.js.map",
-    "static/js/3.0eb470b3.chunk.js": "/wood-capture/static/js/3.0eb470b3.chunk.js",
-    "static/js/3.0eb470b3.chunk.js.map": "/wood-capture/static/js/3.0eb470b3.chunk.js.map",
+    "main.css": "/wood-capture/static/css/main.e8f9d1aa.chunk.css",
+    "main.js": "/wood-capture/static/js/main.743cc592.chunk.js",
+    "main.js.map": "/wood-capture/static/js/main.743cc592.chunk.js.map",
+    "runtime-main.js": "/wood-capture/static/js/runtime-main.64e2d52d.js",
+    "runtime-main.js.map": "/wood-capture/static/js/runtime-main.64e2d52d.js.map",
+    "static/js/2.4776afcd.chunk.js": "/wood-capture/static/js/2.4776afcd.chunk.js",
+    "static/js/2.4776afcd.chunk.js.map": "/wood-capture/static/js/2.4776afcd.chunk.js.map",
+    "static/js/3.91757df6.chunk.js": "/wood-capture/static/js/3.91757df6.chunk.js",
+    "static/js/3.91757df6.chunk.js.map": "/wood-capture/static/js/3.91757df6.chunk.js.map",
     "index.html": "/wood-capture/index.html",
-    "static/css/2.800be05e.chunk.css.map": "/wood-capture/static/css/2.800be05e.chunk.css.map",
-    "static/css/main.0201f0ca.chunk.css.map": "/wood-capture/static/css/main.0201f0ca.chunk.css.map",
-    "static/js/2.8acfd099.chunk.js.LICENSE.txt": "/wood-capture/static/js/2.8acfd099.chunk.js.LICENSE.txt"
+    "static/css/main.e8f9d1aa.chunk.css.map": "/wood-capture/static/css/main.e8f9d1aa.chunk.css.map",
+    "static/js/2.4776afcd.chunk.js.LICENSE.txt": "/wood-capture/static/js/2.4776afcd.chunk.js.LICENSE.txt",
+    "static/media/ufrpe.7ed73b5c.jpeg": "/wood-capture/static/media/ufrpe.7ed73b5c.jpeg"
   },
   "entrypoints": [
-    "static/js/runtime-main.91948bdd.js",
-    "static/css/2.800be05e.chunk.css",
-    "static/js/2.8acfd099.chunk.js",
-    "static/css/main.0201f0ca.chunk.css",
-    "static/js/main.9925a875.chunk.js"
+    "static/js/runtime-main.64e2d52d.js",
+    "static/js/2.4776afcd.chunk.js",
+    "static/css/main.e8f9d1aa.chunk.css",
+    "static/js/main.743cc592.chunk.js"
   ]
 }
