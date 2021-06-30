@@ -32,8 +32,8 @@ export class AccountSetup extends Component {
 							<h1>Informações Básicas</h1>
 
 							<div className="form-group">
-								<label htmlFor="name">Espécie de madeira</label>
-								<select name="specie" onChange={inputChange('specie')} value={values.specie} class="form-control form-select" aria-label="Default select example" required>
+								<label htmlFor="specie">Espécie de madeira</label>
+								<select name="specie" id="specie" onChange={inputChange('specie')} value={values.specie} class="form-control form-select" aria-label="Default select example" required>
 									<option value="" selected>Esocolha uma espécie</option>
 										<option value="1">Pinus</option>
 										<option value="2">Opção 2</option>
@@ -103,7 +103,7 @@ export class AccountSetup extends Component {
 							</div>
 
 							<br />
-							<Row>
+							<Row className="btn-section">
 								<Col className="btn-back">
 									<button className="btn btn-danger" onClick={this.back}>Voltar</button>
 								</Col>

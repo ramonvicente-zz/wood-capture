@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 export class StartForm extends Component {
   continue = e => {
       e.preventDefault();
@@ -13,18 +12,29 @@ export class StartForm extends Component {
 
   render() {
     return (
-      <div className="form-container">
-        <div>
+      <div className="form-container center">
+        <h1>Olá, seja bem vindo(a) ao Smart Wood Database!</h1>
+        <div className="jumbotron jumbotron-info">
+          <div className="center icon-section">
+            <i class="em em-male-scientist" aria-role="presentation" aria-label=""></i>
+            <i class="em em-female-scientist" aria-role="presentation" aria-label=""></i>
+          </div>
           <span>Projeto de pesquisa para catalogação e identificação automática de espécies de madeira. </span>
         </div>
-        <div>
+        <div className="jumbotron jumbotron-success">
+          <div className="center icon-section">
+            <i class="em em-trophy" aria-role="presentation" aria-label="TROPHY"></i>
+          </div>
           <span>A sua participação é essencial e poderá ajudar muitas pessoas interessadas no assunto!</span>
         </div>
-        <div>
+        <div className="jumbotron jumbotron-warn">
+          <div className="center icon-section">
+          <i class="em em-iphone" aria-role="presentation" aria-label="MOBILE PHONE"></i>
+          </div>
           <span> Forneça preferencialmente amostras de imagens de madeira sem acabamento.</span>
         </div>
 
-        <div className="btn-continue">
+        <div className="btn-continue btn-section">
           <button className="btn btn-primary" onClick={this.continue}>Continuar</button>
         </div>
       </div>

@@ -2,26 +2,23 @@ import React, { Component } from 'react';
 import BasicInfos from './BasicInfos';
 import WoodDetails from './WoodDetails';
 import StartForm from './StartForm';
-import Success from './Success';
+import ThankYou from './ThankYou';
 
 export class Form extends Component {
   state = {
-      step: 1,
-      specie: '',
-      other: '',
-      density: '',
-      cutType: '',
-      planer: '',
-      weight: '',
-      sandpaper: '',
-      lathe: '',
-      details: [{
-          image: '',
-          widght: 0,
-          height: 0,
-          view: ''
-      }]
-
+    step: 1,
+    specie: '',
+    other: '',
+    density: '',
+    cutType: '',
+    planer: '',
+    weight: '',
+    sandpaper: '',
+    lathe: '',
+    image: '',
+    width: '',
+    height: '',
+    view: ''
   };
 
   nextStep = () => {
@@ -40,10 +37,15 @@ export class Form extends Component {
       });
   };
 
+  newRegister = () => {
+		const { step } = this.state;
+		this.setState({ step: step - 2 });
+	};
+
   render() {
     const { step } = this.state;
-    const { specie, other, density, cutType, planer, weight, sandpaper, lathe, details } = this.state;
-    const values = { specie, other, density, cutType, planer, weight, sandpaper, lathe, details };
+    const { specie, other, density, cutType, planer, weight, sandpaper, lathe, image, width, height, view } = this.state;
+    const values = { specie, other, density, cutType, planer, weight, sandpaper, lathe, image, width, height, view };
 
     switch (step) {
       case 1:
@@ -67,12 +69,14 @@ export class Form extends Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             inputChange={this.inputChange}
-            values={details}
+            values={values}
           />
         );
       case 4:
         return (
-          <Success/>
+          <ThankYou
+            newRegister={this.newRegister}
+          />
         );
       default:
     }
