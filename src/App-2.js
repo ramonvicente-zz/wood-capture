@@ -73,7 +73,6 @@ handleUpload = () =>{
         console.error("Error writing document: ", error);
       });
     })
-    document.getElementById("file").value = null
 
    }
  ) 

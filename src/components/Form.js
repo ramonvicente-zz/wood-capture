@@ -15,7 +15,8 @@ export class Form extends Component {
     weight: '',
     sandpaper: '',
     lathe: '',
-    image: '',
+    imageUrl: '',
+    imageUpload: '',
     width: '',
     height: '',
     view: ''
@@ -31,10 +32,19 @@ export class Form extends Component {
       this.setState({ step: step - 1 });
   };
 
-  inputChange = input => e => {
-      this.setState({
-          [input]: e.target.value
-      });
+  inputChange = input => element => {
+      if(input === 'imageUrl') {
+        this.setState({
+          imageUrl: element.target.files[0]
+        });
+        this.setState({
+          imageUpload: URL.createObjectURL(element.target.files[0])
+        }); 
+      } else {
+        this.setState({
+          [input]: element.target.value
+        });
+      }
   };
 
   newRegister = () => {
@@ -44,8 +54,8 @@ export class Form extends Component {
 
   render() {
     const { step } = this.state;
-    const { specie, other, density, cutType, planer, weight, sandpaper, lathe, image, width, height, view } = this.state;
-    const values = { specie, other, density, cutType, planer, weight, sandpaper, lathe, image, width, height, view };
+    const { specie, other, density, cutType, planer, weight, sandpaper, lathe, imageUrl, imageUpload, width, height, view } = this.state;
+    const values = { specie, other, density, cutType, planer, weight, sandpaper, lathe, imageUrl, imageUpload, width, height, view };
 
     switch (step) {
       case 1:

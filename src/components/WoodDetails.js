@@ -3,13 +3,13 @@ import { Col, Row } from 'react-bootstrap';
 import firebase from "../firebase/firebase";
 
 export class WoodDetails extends Component {
+
   save = values => e => {
     e.preventDefault();
     console.log('teste', this.validateFields(values));
     if(this.validateFields(values) === 0) {
       console.log('teste1');
       this.registerWood(values);
-      this.props.nextStep();
     }
   };
 
@@ -24,22 +24,6 @@ export class WoodDetails extends Component {
 
   clearFields = (values) => e => {
     e.preventDefault();
-
-    document.getElementById("specie").value = "";
-    document.getElementsByName("other")[0].value = '';
-    document.getElementsByName("density")[0].value = '';
-    document.getElementsByName("cutType")[0].value = '';
-    document.getElementsByName("planer")[0].value = '';
-    document.getElementById("weight").value = "";
-    document.getElementsByName("specie")[0].value = '';
-    document.getElementsByName("specie")[0].value = '';
-    document.getElementsByName("specie")[0].value = '';
-    document.getElementsByName("specie")[0].value = '';
-    document.getElementsByName("specie")[0].value = '';
-    document.getElementsByName("specie")[0].value = '';
-    document.getElementsByName("specie")[0].value = '';
-
-    values.weight = '';
   }
   
   validateFields = (values) => {
@@ -47,7 +31,7 @@ export class WoodDetails extends Component {
 
     if(values.image === '') {
       count++;
-      document.getElementsByName("image")[0].style.borderColor="red";
+      document.getElementsByName("imageUrl")[0].style.borderColor="red";
     }
 
     if(values.width === 0 || values.width === '') {
@@ -68,21 +52,78 @@ export class WoodDetails extends Component {
     return count;
   }
 
+  imageUpload = (element) => {
+    
+    if(element.target.files[0]){
+      this.setState({
+        imageURL: element.target.files[0]
+      });
+      this.setState({
+        imageUpload: URL.createObjectURL(element.target.files[0])
+      });
+    }
+  }
+
+  registerWood = (values) =>{
+    let file = values.imageUrl;
+    let storage = firebase.storage();
+    let storageRef = storage.ref();
+    let uploadTask = storageRef.child('folder/' + file.name + Date.now()).put(file);
+    let database = firebase.firestore();
+  
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      (snapshot) =>{
+        let progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
+      },(error) =>{
+        throw error
+      },() =>{
+      uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
+        this.setState({
+          imageURL: url
+        })
+        database.collection("woods").add({
+          specie: values.specie || values.other,
+          density: values.density,
+          cutType: values.cutType,
+          planer: values.planer,
+          weight: values.weight,
+          sandpaper: values.sandpaper,
+          lathe: values.lathe,
+          woodDetails: [{
+            image: url,
+            width: values.width,
+            height: values.height,
+            view: values.view
+          }]
+        })
+        .then(() => {
+          this.props.nextStep();
+          console.log("Document successfully written!");
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+      })
+  
+     }
+   ) 
+  }
+
   render() {
     let { values, inputChange } = this.props;
-
+    
     return (
       <div className="form-container">
           <h1>Detalhes da Madeira</h1>
 
         <div className="form-group">
           <label htmlFor="image">Imagem</label>
-          <input type="file" class="form-control-file" name="image" onChange={inputChange('image')} value={values.image} id="image"></input>
+          <input type="file" class="form-control-file" name="image" onChange={inputChange('imageUrl')} id="image"></input>
         </div>
         <div className="form-group">
           <img
             className="ref"
-            src={values.downloadURL || "https://via.placeholder.com/400x300"}
+            src={values.imageUpload || "https://via.placeholder.com/400x300"}
             alt="Uploaded Images"
             id="wood-image"
           />
