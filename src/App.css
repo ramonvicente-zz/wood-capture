@@ -63,7 +63,7 @@ h1 {
 }
 
 .form-group > label {
-  padding-bottom: 5px;
+  margin-bottom: 5px;
   font-weight: 600;
 }
 
@@ -101,4 +101,8 @@ h1 {
 
 .btn-section {
   margin-bottom: 10px;
+}
+
+#with-load {
+  display: none;
 }

@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Spinner } from 'react-bootstrap';
 import firebase from "../firebase/firebase";
 
 export class WoodDetails extends Component {
 
   save = values => e => {
     e.preventDefault();
-    console.log('teste', this.validateFields(values));
     if(this.validateFields(values) === 0) {
-      console.log('teste1');
+      this.loadButton();
+      this.disableFields();
       this.registerWood(values);
     }
   };
@@ -18,8 +18,18 @@ export class WoodDetails extends Component {
       this.props.prevStep();
   };
 
-  registerWood = (values) => e => {
-    e.preventDefault();
+  loadButton = () => {
+    document.getElementById("without-load").style.display = "none";
+    document.getElementById("with-load").style.display = "block";
+  }
+
+  disableFields = () => {
+   //document.getElementById("widht").readOnly = true;
+    document.getElementById("back").setAttribute("disabled","disabled");
+    document.getElementById("image").setAttribute("disabled","disabled");
+    document.getElementById("width").setAttribute('readonly', true);
+    document.getElementById("height").setAttribute('readonly', true);
+    document.getElementById("view").setAttribute('readonly', true);
   }
 
   clearFields = (values) => e => {
@@ -48,7 +58,6 @@ export class WoodDetails extends Component {
       count++;
       document.getElementsByName("view")[0].style.borderColor="red";
     }
-    console.log('width', values.width );
     return count;
   }
 
@@ -73,40 +82,39 @@ export class WoodDetails extends Component {
   
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot) =>{
-        let progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
-      },(error) =>{
-        throw error
-      },() =>{
-      uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
-        this.setState({
-          imageURL: url
+
+        },(error) =>{
+          throw error
+        },() =>{
+        uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
+          this.setState({
+            imageURL: url
+          })
+          database.collection("woods").add({
+            specie: values.specie || values.other,
+            density: values.density,
+            cutType: values.cutType,
+            planer: values.planer,
+            weight: values.weight,
+            sandpaper: values.sandpaper,
+            lathe: values.lathe,
+            woodDetails: [{
+              image: url,
+              width: values.width,
+              height: values.height,
+              view: values.view
+            }]
+          })
+          .then(() => {
+            this.props.nextStep();
+            console.log("Document successfully written!");
+          })
+          .catch((error) => {
+            console.error("Error writing document: ", error);
+          });
         })
-        database.collection("woods").add({
-          specie: values.specie || values.other,
-          density: values.density,
-          cutType: values.cutType,
-          planer: values.planer,
-          weight: values.weight,
-          sandpaper: values.sandpaper,
-          lathe: values.lathe,
-          woodDetails: [{
-            image: url,
-            width: values.width,
-            height: values.height,
-            view: values.view
-          }]
-        })
-        .then(() => {
-          this.props.nextStep();
-          console.log("Document successfully written!");
-        })
-        .catch((error) => {
-          console.error("Error writing document: ", error);
-        });
-      })
-  
-     }
-   ) 
+      }
+    ) 
   }
 
   render() {
@@ -118,6 +126,7 @@ export class WoodDetails extends Component {
 
         <div className="form-group">
           <label htmlFor="image">Imagem</label>
+          <br></br>
           <input type="file" class="form-control-file" name="image" onChange={inputChange('imageUrl')} id="image"></input>
         </div>
         <div className="form-group">
@@ -130,17 +139,17 @@ export class WoodDetails extends Component {
         </div>
         <div className="form-group">
           <label htmlFor="width">Largura em mm</label>
-          <input type="number" className="form-control" name="width" onChange={inputChange('width')} value={values.width} placeholder="ex.: 60"/>
+          <input type="number" id="width" className="form-control" name="width" onChange={inputChange('width')} value={values.width} placeholder="ex.: 60"/>
           <span>As dimensões podem ser aproximadas</span>
         </div>
         <div className="form-group">
           <label htmlFor="height">Altura em mm</label>
-          <input type="number" className="form-control" name="height" onChange={inputChange('height')} value={values.height} placeholder="ex.: 60"/>
+          <input type="number" className="form-control" name="height" onChange={inputChange('height')} value={values.height} placeholder="ex.: 60" id="height"/>
           <span>As dimensões podem ser aproximadas</span>
         </div>
         <div className="form-group">
           <label htmlFor="view">Visão</label>
-          <select name="view" onChange={inputChange('view')} value={values.view} class="form-control form-select" aria-label="Default select example">
+          <select name="view" onChange={inputChange('view')} value={values.view} class="form-control form-select" aria-label="Default select example" id="view">
             <option selected>Esocolha uma opção</option>
               <option value="topo">Topo</option>
               <option value="tangencial">Tangencial</option>
@@ -163,10 +172,13 @@ export class WoodDetails extends Component {
           <br />
         <Row className="btn-section">
           <Col className="btn-back">
-            <button className="btn btn-danger" onClick={this.back}>Voltar</button>
+            <button id="back" className="btn btn-danger" onClick={this.back}>Voltar</button>
           </Col>
-          <Col className="btn-continue">
-            <button className="btn btn-primary" onClick={this.save(values)}>Salvar</button>
+          <Col className="btn-continue" id="with-load">
+            <button disabled className="btn btn-primary"><Spinner animation="border" variant="info" size="sm"/> Salvando...</button>
+          </Col>
+          <Col className="btn-continue" id="without-load">
+            <button className="btn btn-primary" onClick={this.save(values)}> Salvar</button>
           </Col>
         </Row>
       </div>
