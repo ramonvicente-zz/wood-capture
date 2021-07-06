@@ -91,7 +91,7 @@ export class WoodDetails extends Component {
             imageURL: url
           })
           database.collection("woods").add({
-            specie: values.specie || values.other,
+            specie: values.specie === "other" ? values.other : values.specie,
             density: values.density,
             cutType: values.cutType,
             planer: values.planer,

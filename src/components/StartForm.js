@@ -16,20 +16,20 @@ export class StartForm extends Component {
         <h1>Olá, seja bem vindo(a) ao Smart Wood Database!</h1>
         <div className="jumbotron jumbotron-info">
           <div className="center icon-section">
-            <i class="em em-male-scientist" aria-role="presentation" aria-label=""></i>
-            <i class="em em-female-scientist" aria-role="presentation" aria-label=""></i>
+            <i class="em em-male-scientist" ></i>
+            <i class="em em-female-scientist" ></i>
           </div>
           <span>Projeto de pesquisa para catalogação e identificação automática de espécies de madeira. </span>
         </div>
         <div className="jumbotron jumbotron-success">
           <div className="center icon-section">
-            <i class="em em-trophy" aria-role="presentation" aria-label="TROPHY"></i>
+            <i class="em em-trophy" aria-label="TROPHY"></i>
           </div>
           <span>A sua participação é essencial e poderá ajudar muitas pessoas interessadas no assunto!</span>
         </div>
         <div className="jumbotron jumbotron-warn">
           <div className="center icon-section">
-          <i class="em em-iphone" aria-role="presentation" aria-label="MOBILE PHONE"></i>
+          <i class="em em-iphone" aria-label="MOBILE PHONE"></i>
           </div>
           <span> Forneça preferencialmente amostras de imagens de madeira sem acabamento.</span>
         </div>
