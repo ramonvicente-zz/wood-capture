@@ -3,13 +3,8 @@ import { Col, Row } from 'react-bootstrap';
 export class AccountSetup extends Component {
 	continue = values => e => {
 		e.preventDefault();
-		if(this.handleValidation(values))
+		if(this.handleValidation(values)) {
 			this.props.nextStep();
-
-		if(!this.handleValidation(values)) {
-			document.getElementsByName("specie")[0].focus();
-			document.getElementsByName("specie")[0].style.borderColor="red";
-			
 		}
 	};
 
@@ -19,8 +14,17 @@ export class AccountSetup extends Component {
 	};
 
 	handleValidation = (values) => {
-		if (values.specie !== '') return true;
-		return false; 
+		if (values.specie === '') {
+			document.getElementsByName("specie")[0].focus();
+			document.getElementsByName("specie")[0].style.borderColor="red";
+			return false;
+		}
+		if (values.other === '') {
+			document.getElementsByName("other")[0].focus();
+			document.getElementsByName("other")[0].style.borderColor="red";
+			return false;
+		} 
+		return true; 
 	} 
 
 	renderSelectOptions = () => {
@@ -63,7 +67,7 @@ export class AccountSetup extends Component {
 						{this.renderSelectOptions()}
 					</select>
 				</div>
-				{ values.specie === "OTHER" && (
+				{ values.specie === "other" && (
 					<div className="form-group">
 						<label htmlFor="other">Outra</label>
 						<input type="text" className="form-control" name="other" onChange={inputChange('other')} value={values.other} required/>
