@@ -19,7 +19,7 @@ export class AccountSetup extends Component {
 			document.getElementsByName("specie")[0].style.borderColor="red";
 			return false;
 		}
-		if (values.other === '') {
+		if (values.specie === 'other' && values.other === '') {
 			document.getElementsByName("other")[0].focus();
 			document.getElementsByName("other")[0].style.borderColor="red";
 			return false;
