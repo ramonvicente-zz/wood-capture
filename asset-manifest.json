@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/wood-capture/static/css/main.90fd7570.chunk.css",
-    "main.js": "/wood-capture/static/js/main.80544010.chunk.js",
-    "main.js.map": "/wood-capture/static/js/main.80544010.chunk.js.map",
+    "main.js": "/wood-capture/static/js/main.cf8a229c.chunk.js",
+    "main.js.map": "/wood-capture/static/js/main.cf8a229c.chunk.js.map",
     "runtime-main.js": "/wood-capture/static/js/runtime-main.e1090767.js",
     "runtime-main.js.map": "/wood-capture/static/js/runtime-main.e1090767.js.map",
     "static/js/2.27fe8ada.chunk.js": "/wood-capture/static/js/2.27fe8ada.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.e1090767.js",
     "static/js/2.27fe8ada.chunk.js",
     "static/css/main.90fd7570.chunk.css",
-    "static/js/main.80544010.chunk.js"
+    "static/js/main.cf8a229c.chunk.js"
   ]
 }
