@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Col, Row, Spinner } from 'react-bootstrap';
 import firebase from "../firebase/firebase";
+import swal from 'sweetalert';
 
 export class WoodDetails extends Component {
 
@@ -13,7 +14,7 @@ export class WoodDetails extends Component {
       this.registerWood(values);
     }
     if(errorMessage !== '')
-      alert('Preencha os campos obrigatórios em vermelho: \n'+errorMessage)
+      swal("Campos obrigatórios:", errorMessage, "error");
   };
 
   back = e => {
@@ -42,7 +43,7 @@ export class WoodDetails extends Component {
     let labelsName = '';
 
     if(values.specie === '') {
-      labelsName+='- Espécie de Maderia \n';
+      labelsName+='- Espécie de Madeira \n';
 			document.getElementsByName("specie")[0].focus();
 			document.getElementsByName("specie")[0].style.borderColor="red";
 		} else {
