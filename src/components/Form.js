@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import BasicInfos from './BasicInfos';
 import WoodDetails from './WoodDetails';
 import StartForm from './StartForm';
 import ThankYou from './ThankYou';
@@ -10,7 +9,7 @@ export class Form extends Component {
     specie: '',
     other: '',
     density: '',
-    cutType: '',
+    cut: '',
     planer: '',
     weight: '',
     sandpaper: '',
@@ -19,7 +18,7 @@ export class Form extends Component {
     imageUpload: '',
     width: '',
     height: '',
-    view: ''
+    cutType: ''
   };
 
   nextStep = () => {
@@ -54,8 +53,8 @@ export class Form extends Component {
 
   render() {
     const { step } = this.state;
-    const { specie, other, density, cutType, planer, weight, sandpaper, lathe, imageUrl, imageUpload, width, height, view } = this.state;
-    const values = { specie, other, density, cutType, planer, weight, sandpaper, lathe, imageUrl, imageUpload, width, height, view };
+    const { specie, other, density, cut, planer, weight, sandpaper, lathe, imageUrl, imageUpload, width, height, cutType } = this.state;
+    const values = { specie, other, density, cut, planer, weight, sandpaper, lathe, imageUrl, imageUpload, width, height, cutType };
 
     switch (step) {
       case 1:
@@ -66,15 +65,6 @@ export class Form extends Component {
         );
       case 2:
         return (
-          <BasicInfos
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            inputChange={this.inputChange}
-            values={values}
-          />
-        );
-      case 3:
-        return (
           <WoodDetails
             nextStep={this.nextStep}
             prevStep={this.prevStep}
@@ -82,7 +72,7 @@ export class Form extends Component {
             values={values}
           />
         );
-      case 4:
+      case 3:
         return (
           <ThankYou
             newRegister={this.newRegister}
