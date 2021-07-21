@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Col, Row, Spinner } from 'react-bootstrap';
 import firebase from "../firebase/firebase";
 import swal from 'sweetalert';
-
+import { getWoods } from '../utils/WoodDatas'
 export class WoodDetails extends Component {
 
   save = values => e => {
@@ -151,29 +151,10 @@ export class WoodDetails extends Component {
   }
 
 	renderSelectOptions = () => {
+    const woodList = getWoods();
 		return(<>
-		<option value="aroeira">Aroeira</option>
-		<option value="carvalho">Carvalho</option>
-		<option value="cedro">Cedro</option>
-		<option value="cerejeira">Cerejeira</option>
-		<option value="cumaru">Cumaru</option>
-		<option value="freijo">Freijó</option>
-		<option value="goiabao">Goiabão</option>
-		<option value="imbuia">Imbuia</option>
-		<option value="ipe">Ipê</option>
-		<option value="itauba">Itaúba</option>
-		<option value="jacaranda">Jacarandá</option>
-		<option value="louro">Louro</option>
-		<option value="nogueira">Nogueira</option>
-		<option value="mogno">Mogno</option>
-		<option value="pinho">Pinho</option>
-		<option value="pinus">Pinus</option>
-		<option value="garapeira">Garapeira</option>
-		<option value="eucalipto">Eucalipto</option>
-		<option value="angelim">Angelim</option>
-		<option value="madeira-de-demolicao">Madeira de demolição</option>
-		<option value="mdf">MDF</option>
-		<option value="other">Outro</option></>)
+      {woodList.map( wood => <option value={wood.value}>{wood.name}</option>)}
+    </>)
 	}
 
   render() {
@@ -188,6 +169,7 @@ export class WoodDetails extends Component {
 					<select name="specie" id="specie" onChange={inputChange('specie')} value={values.specie} class="form-control form-select" aria-label="Default select example" required>
 						<option value="" selected>Selecione uma espécie</option>
 						{this.renderSelectOptions()}
+            <option value="other">Outro</option>
 					</select>
 				</div>
         { values.specie === "other" && (
