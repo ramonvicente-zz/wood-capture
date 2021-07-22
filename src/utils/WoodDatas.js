@@ -140,7 +140,6 @@ export const getWoods = () => {
     {name: 'Quiri', value: 'quiri'},
     {name: 'Pau-roxo-do-maranhão', value: 'pau-roxo-do-maranhao'},
     {name: 'Pau-roxo', value: 'pau-roxo'},
-    {name: 'Pau-jacaré', value: 'pau-jacare'},
     {name: 'Vinhático-cabeleira', value: 'vinhatico-cabeleira'},
     {name: 'Macacaúba-do-campo', value: 'macacauba-do-campo'},
     {name: 'Amescla-vermelha', value: 'amescla-vermelha'},
