@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/wood-capture/static/css/main.90fd7570.chunk.css",
-    "main.js": "/wood-capture/static/js/main.9df4ba96.chunk.js",
-    "main.js.map": "/wood-capture/static/js/main.9df4ba96.chunk.js.map",
+    "main.css": "/wood-capture/static/css/main.46d29b61.chunk.css",
+    "main.js": "/wood-capture/static/js/main.d9ba4a12.chunk.js",
+    "main.js.map": "/wood-capture/static/js/main.d9ba4a12.chunk.js.map",
     "runtime-main.js": "/wood-capture/static/js/runtime-main.4adc5699.js",
     "runtime-main.js.map": "/wood-capture/static/js/runtime-main.4adc5699.js.map",
-    "static/js/2.e3339e06.chunk.js": "/wood-capture/static/js/2.e3339e06.chunk.js",
-    "static/js/2.e3339e06.chunk.js.map": "/wood-capture/static/js/2.e3339e06.chunk.js.map",
+    "static/js/2.62b01a81.chunk.js": "/wood-capture/static/js/2.62b01a81.chunk.js",
+    "static/js/2.62b01a81.chunk.js.map": "/wood-capture/static/js/2.62b01a81.chunk.js.map",
     "static/js/3.c39a073b.chunk.js": "/wood-capture/static/js/3.c39a073b.chunk.js",
     "static/js/3.c39a073b.chunk.js.map": "/wood-capture/static/js/3.c39a073b.chunk.js.map",
     "index.html": "/wood-capture/index.html",
-    "static/css/main.90fd7570.chunk.css.map": "/wood-capture/static/css/main.90fd7570.chunk.css.map",
-    "static/js/2.e3339e06.chunk.js.LICENSE.txt": "/wood-capture/static/js/2.e3339e06.chunk.js.LICENSE.txt",
+    "static/css/main.46d29b61.chunk.css.map": "/wood-capture/static/css/main.46d29b61.chunk.css.map",
+    "static/js/2.62b01a81.chunk.js.LICENSE.txt": "/wood-capture/static/js/2.62b01a81.chunk.js.LICENSE.txt",
     "static/media/ufrpe.7ed73b5c.jpeg": "/wood-capture/static/media/ufrpe.7ed73b5c.jpeg"
   },
   "entrypoints": [
     "static/js/runtime-main.4adc5699.js",
-    "static/js/2.e3339e06.chunk.js",
-    "static/css/main.90fd7570.chunk.css",
-    "static/js/main.9df4ba96.chunk.js"
+    "static/js/2.62b01a81.chunk.js",
+    "static/css/main.46d29b61.chunk.css",
+    "static/js/main.d9ba4a12.chunk.js"
   ]
 }
