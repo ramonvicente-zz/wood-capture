@@ -28,11 +28,9 @@ h1 {
   height: 300px;
 }
 
-@media (min-width: 500px) {
-  #wood-image {
-    width: 400px;
-    height: 300px;
-  }
+#wood-image {
+  max-width: 100%;
+  height: auto;
 }
 
 .nav-header {

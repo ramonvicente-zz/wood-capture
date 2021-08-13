@@ -3,6 +3,8 @@ import { Col, Row, Spinner } from 'react-bootstrap';
 import firebase from "../firebase/firebase";
 import swal from 'sweetalert';
 import { getWoods } from '../utils/WoodDatas'
+
+import Image from 'react-bootstrap/Image'
 export class WoodDetails extends Component {
 
   save = values => e => {
@@ -186,20 +188,15 @@ export class WoodDetails extends Component {
         </div>
   
         <div className="form-group">
-          <img
-            className="ref"
-            src={values.imageUpload || "https://via.placeholder.com/400x300"}
-            alt="Uploaded Images"
-            id="wood-image"
-          />
+          <Image src={values.imageUpload || "https://via.placeholder.com/400x300"} fluid id="wood-image"/>
         </div>
         <div className="form-group">
-          <label htmlFor="width">Largura em mm</label>
+          <label htmlFor="width">Largura em mm (Opcional)</label>
           <input type="number" id="width" className="form-control" name="width" onChange={inputChange('width')} value={values.width} placeholder="ex.: 60"/>
           <span>As dimensões podem ser aproximadas</span>
         </div>
         <div className="form-group">
-          <label htmlFor="height">Altura em mm</label>
+          <label htmlFor="height">Altura em mm (Opcional)</label>
           <input type="number" className="form-control" name="height" onChange={inputChange('height')} value={values.height} placeholder="ex.: 60" id="height"/>
           <span>As dimensões podem ser aproximadas</span>
         </div>
@@ -212,20 +209,8 @@ export class WoodDetails extends Component {
               <option value="radial">Radial</option>
           </select>
         </div>
-        {/* <div className="form-group check-element">
-            <label htmlFor="name">Visão da madeira</label>
-            <br />
-            <input type="radio" className="btn-check" name="options" id="option1" autocomplete="off"/>
-            <label class="btn btn-secondary" for="option1">Topo</label>
 
-            <input type="radio" className="btn-check" name="options" id="option2" autocomplete="off"/>	
-            <label class="btn btn-secondary" for="option2">Tangêncial</label>
-
-            <input type="radio" className="btn-check" name="options" id="option4" autocomplete="off"/>
-            <label class="btn btn-secondary" for="option4">Radial</label>
-        </div> */}
-
-<div className="form-group">
+      <div className="form-group">
 					<label htmlFor="weight">Peso em gramas (Opcional)</label>
 					<input type="number" className="form-control" name="weight" onChange={inputChange('weight')} value={values.weight} />
 				</div>
