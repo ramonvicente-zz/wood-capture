@@ -69,22 +69,6 @@ export class WoodDetails extends Component {
       document.getElementsByName("imageUrl")[0].style.borderColor="black";
     }
 
-    if(values.width === 0 || values.width === '') {
-      labelsName+='- Largura \n';
-      document.getElementsByName("width")[0].focus();
-      document.getElementsByName("width")[0].style.borderColor="red";
-    } else {
-      document.getElementsByName("width")[0].style.borderColor="#ced4da";
-    }
-
-    if(values.height === 0 || values.height === '') {
-      labelsName+='- Altura \n';
-      document.getElementsByName("height")[0].focus();
-      document.getElementsByName("height")[0].style.borderColor="red";
-    } else {
-      document.getElementsByName("height")[0].style.borderColor="#ced4da";
-    }
-
     if(values.cutType === '') {
       labelsName+='- Tipo de Corte \n';
       document.getElementsByName("cutType")[0].focus();
