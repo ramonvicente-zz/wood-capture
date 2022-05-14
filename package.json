@@ -1,6 +1,6 @@
 {
   "homepage": "http://ramonvicente.github.io/wood-capture",
-  "name": "wood-database",
+  "name": "wood-capture",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
