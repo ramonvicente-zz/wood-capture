@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 
 export class Success extends Component {
-	newRegister = e => {
-		e.preventDefault();
-		this.props.newRegister();
-	};
+
 	render() {
 		return (
 			<div className="form-container">

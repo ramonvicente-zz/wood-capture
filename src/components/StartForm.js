@@ -1,19 +1,10 @@
 import React, { Component } from 'react'
 export class StartForm extends Component {
-  continue = e => {
-      e.preventDefault();
-      this.props.nextStep();
-  };
-
-  back = e => {
-      e.preventDefault();
-      this.props.prevStep();
-  };
 
   render() {
     return (
       <div className="form-container center">
-        <h1>Olá, seja bem vindo(a) ao Smart Wood Database!</h1>
+        <h1>Olá, seja bem vindo(a) ao Wood Capture!</h1>
         <div className="jumbotron jumbotron-info">
           <div className="center icon-section">
             <i class="em em-male-scientist" ></i>
@@ -35,7 +26,7 @@ export class StartForm extends Component {
         </div>
 
         <div className="btn-continue btn-section">
-          <button className="btn btn-primary" onClick={this.continue}>Continuar</button>
+          <button className="btn btn-primary" onClick={this.props.nextStep}>Continuar</button>
         </div>
       </div>
     )
