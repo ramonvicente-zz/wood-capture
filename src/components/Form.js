@@ -153,7 +153,7 @@ export class Form extends Component {
 					</select>
 				</div>
 
-          <br />
+        <br />
         <Row className="btn-section">
           <Col className="btn-back">
             <button id="back" className="btn btn-danger" onClick={this.props.prevStep}>Voltar</button>

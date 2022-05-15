@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import './App.css';
-import Home from './components/Home';
+import Initializer from './components/Initializer';
 import IFPE from './resources/ifpe.png';
 import UFRPE from './resources/ufrpe.jpeg';
 
@@ -18,7 +18,7 @@ function App() {
           </Navbar.Collapse>
         </Navbar>
         <div className="container">
-          <Home />
+          <Initializer />
         </div>
       </div>
     </div>

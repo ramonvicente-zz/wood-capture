@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Form from './Form';
-import StartForm from './StartForm';
+import Welcome from './Welcome';
 import ThankYou from './ThankYou';
 
-export class Home extends Component {
+export class Initializer extends Component {
   state = {
     step: 1,
     specie: '',
@@ -54,14 +54,13 @@ export class Home extends Component {
     switch (step) {
       case 1:
         return (
-          <StartForm
+          <Welcome
             nextStep={this.nextStep}
           />
         );
       case 2:
         return (
           <Form
-            nextStep={this.nextStep}
             prevStep={this.prevStep}
             inputChange={this.inputChange}
             values={values}
@@ -69,13 +68,11 @@ export class Home extends Component {
         );
       case 3:
         return (
-          <ThankYou
-            newRegister={this.newRegister}
-          />
+          <ThankYou />
         );
       default:
     }
   }
 }
 
-export default Home
+export default Initializer
