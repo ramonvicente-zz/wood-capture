@@ -1,5 +1,4 @@
 import firebase from "./Client";
-import { collection, getDocs } from "firebase/firestore";
 import swal from 'sweetalert';
 
 export const saveForm = (values, props) =>{

@@ -100,7 +100,7 @@ export class Form extends Component {
 
       <div className="form-group">
 					<label htmlFor="weight">Peso em gramas (Opcional)</label>
-					<input type="number" className="form-control" name="weight" onChange={inputChange('weight')} value={values.weight} />
+					<input type="number" className="form-control" name="weight" onChange={inputChange('weight')} placeholder="ex.: 200" value={values.weight} />
 				</div>
 					
 				<div className="form-group">

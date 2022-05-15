@@ -3,8 +3,8 @@ import { Navbar } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import './App.css';
 import Home from './components/Home';
-import IFPE from './ifpe.png';
-import UFRPE from './ufrpe.jpeg';
+import IFPE from './resources/ifpe.png';
+import UFRPE from './resources/ufrpe.jpeg';
 
 function App() {
   return (
