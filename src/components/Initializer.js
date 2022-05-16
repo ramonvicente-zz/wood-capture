@@ -61,6 +61,7 @@ export class Initializer extends Component {
       case 2:
         return (
           <Form
+            nextStep={this.nextStep}
             prevStep={this.prevStep}
             inputChange={this.inputChange}
             values={values}

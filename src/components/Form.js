@@ -7,6 +7,10 @@ import swal from 'sweetalert';
 
 
 import Image from 'react-bootstrap/Image'
+import TextField from './Form/TextField';
+import NumberField from './Form/NumberField';
+import SelectField from './Form/SelectField';
+
 export class Form extends Component {
 
   constructor(props) {
@@ -46,6 +50,14 @@ export class Form extends Component {
     this.setState({WoodList: woodList})
 	}
 
+  getDefaultOptions = () => {
+    return [
+      {name:'Fácil', value:'facil'},
+      {name:'Médio', value:'medio'},
+      {name:'Difícil', value:'dificil'}
+    ]
+  }
+
   render() {
     const { values, inputChange } = this.props;
     const renderOptions = this.state.WoodList?.map( wood => <option value={wood.value}>{wood.name}</option>);
@@ -63,10 +75,7 @@ export class Form extends Component {
 					</select>
 				</div>
         { values.specie === "other" && (
-					<div className="form-group">
-						<label htmlFor="other">Outra</label>
-						<input type="text" className="form-control" name="other" onChange={inputChange('other')} value={values.other} required/>
-					</div>)
+          <TextField fieldName="other" title="Outra" inputChange={inputChange('other')} value={values.other} />)
 				}
 
         <div className="form-group">
@@ -78,16 +87,13 @@ export class Form extends Component {
         <div className="form-group">
           <Image src={values.imageUpload || "https://via.placeholder.com/400x300"} fluid id="wood-image"/>
         </div>
-        <div className="form-group">
-          <label htmlFor="width">Largura em mm (Opcional)</label>
-          <input type="number" id="width" className="form-control" name="width" onChange={inputChange('width')} value={values.width} placeholder="ex.: 60"/>
-          <span>As dimensões podem ser aproximadas</span>
-        </div>
-        <div className="form-group">
-          <label htmlFor="height">Altura em mm (Opcional)</label>
-          <input type="number" className="form-control" name="height" onChange={inputChange('height')} value={values.height} placeholder="ex.: 60" id="height"/>
-          <span>As dimensões podem ser aproximadas</span>
-        </div>
+
+        <NumberField fieldName='width' title='Largura em mm (Opcional)' inputChange={inputChange('width')} values={values.width} 
+            placeholder='ex.: 60' isRequired={false} message='As dimensões podem ser aproximadas'/>
+        
+        <NumberField fieldName='height' title='Altura em mm (Opcional)' inputChange={inputChange('height')} values={values.height} 
+            placeholder='ex.: 60' isRequired={false} message='As dimensões podem ser aproximadas'/>
+
         <div className="form-group">
           <label htmlFor="cutType">Tipo de Corte</label>
           <select name="cutType" onChange={inputChange('cutType')} value={values.cutType} class="form-control form-select" aria-label="Default select example" id="cutType">
@@ -98,10 +104,8 @@ export class Form extends Component {
           </select>
         </div>
 
-      <div className="form-group">
-					<label htmlFor="weight">Peso em gramas (Opcional)</label>
-					<input type="number" className="form-control" name="weight" onChange={inputChange('weight')} placeholder="ex.: 200" value={values.weight} />
-				</div>
+        <NumberField fieldName='weight' title='Peso em gramas (Opcional)' inputChange={inputChange('weight')} values={values.weight} 
+            placeholder='ex.: 200' isRequired={false} message='As dimensões podem ser aproximadas'/>
 					
 				<div className="form-group">
 					<label htmlFor="density">Densidade (Opcional)</label>
@@ -113,45 +117,17 @@ export class Form extends Component {
 					</select>
 				</div>
 
-				<div className="form-group">
-					<label htmlFor="cut">Corte (Opcional)</label>
-					<select name="cut" onChange={inputChange('cut')} value={values.cutType} class="form-control form-select" aria-label="Default select example">
-						<option selected>Selecione um modelo de corte</option>
-							<option value="facil">Fácil</option>
-							<option value="medio">Médio</option>
-							<option value="dificil">Difícil</option>
-					</select>
-				</div>
+        <SelectField fieldName='cut' title='Corte (Opcional)' inputChange={inputChange('cut')} 
+            values={values.cut} isRequired={false} defaultValue='Selecione um tipo de corte' options={this.getDefaultOptions()}/>
 
-				<div className="form-group">
-					<label htmlFor="planer">Plaina (Opcional)</label>
-					<select name="planer" onChange={inputChange('planer')} value={values.planer} class="form-control form-select" aria-label="Default select example">
-						<option selected>Selecione um tipo de plaina</option>
-							<option value="facil">Fácil</option>
-							<option value="medio">Médio</option>
-							<option value="dificil">Difícil</option>
-					</select>
-				</div>
+        <SelectField fieldName='planer' title='Plaina (Opcional)' inputChange={inputChange('planer')} 
+            values={values.planer} isRequired={false} defaultValue='Selecione um tipo de plaina' options={this.getDefaultOptions()}/>
 
-				<div className="form-group">
-					<label htmlFor="sandpaper">Lixa (Opcional)</label>
-					<select name="sandpaper" onChange={inputChange('sandpaper')} value={values.sandpaper} class="form-control form-select" aria-label="Default select example">
-						<option selected>Selecione um tipo de lixa</option>
-							<option value="facil">Fácil</option>
-							<option value="medio">Médio</option>
-							<option value="dificil">Difícil</option>
-					</select>
-				</div>
+        <SelectField fieldName='sandpaper' title='Lixa (Opcional)' inputChange={inputChange('sandpaper')} 
+            values={values.sandpaper} isRequired={false} defaultValue='Selecione um tipo de lixa' options={this.getDefaultOptions()}/>
 
-				<div className="form-group">
-					<label htmlFor="lathe">Torno (Opcional)</label>
-					<select name="lathe" onChange={inputChange('lathe')} value={values.lathe} class="form-control form-select" aria-label="Default select example">
-						<option selected>Selecione um tipo de torno</option>
-							<option value="facil">Fácil</option>
-							<option value="medio">Médio</option>
-							<option value="dificil">Difícil</option>
-					</select>
-				</div>
+        <SelectField fieldName='lathe' title='Torno (Opcional)' inputChange={inputChange('lathe')} 
+            values={values.lathe} isRequired={false} defaultValue='Selecione um tipo de torno' options={this.getDefaultOptions()}/>
 
         <br />
         <Row className="btn-section">
