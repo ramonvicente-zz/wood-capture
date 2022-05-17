@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import TextField from '../TextField';
+import TextField from '../Fields/TextField';
 
 test('renders TextField component with the given props', () => {
 	render(<TextField fieldName="test" title="Just a Test" inputChange={() => {}} value={'Testing'} />);

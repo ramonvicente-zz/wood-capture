@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ThankYou from './ThankYou';
+import ThankYou from '../ThankYou';
 
 test('renders ThankYou component correctly', () => {
   render(<ThankYou />);

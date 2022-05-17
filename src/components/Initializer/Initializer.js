@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Form from './Form';
-import Welcome from './Welcome';
-import ThankYou from './ThankYou';
+import Form from '../Form/Form';
+import Welcome from '../Welcome/Welcome';
+import ThankYou from '../ThankYou/ThankYou';
 
 export class Initializer extends Component {
   state = {

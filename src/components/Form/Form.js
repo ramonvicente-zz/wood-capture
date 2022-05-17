@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Col, Row, Spinner } from 'react-bootstrap';
-import { saveForm, getWoodSpecies } from '../firebase/Service';
-import { loadButton, disableFields } from '../utils/FormActions';
-import validateFields from '../utils/ValidateFields';
+import { saveForm, getWoodSpecies } from '../../firebase/Service';
+import { loadButton, disableFields, getSelectOptions } from './FormActions';
+import validateFields from './ValidateFields';
 import swal from 'sweetalert';
 
 
 import Image from 'react-bootstrap/Image'
-import TextField from './Form/TextField';
-import NumberField from './Form/NumberField';
-import SelectField from './Form/SelectField';
+import TextField from './Fields/TextField';
+import NumberField from './Fields/NumberField';
+import SelectField from './Fields/SelectField';
 
 export class Form extends Component {
 
@@ -50,31 +50,18 @@ export class Form extends Component {
     this.setState({WoodList: woodList})
 	}
 
-  getDefaultOptions = () => {
-    return [
-      {name:'Fácil', value:'facil'},
-      {name:'Médio', value:'medio'},
-      {name:'Difícil', value:'dificil'}
-    ]
-  }
-
   render() {
     const { values, inputChange } = this.props;
-    const renderOptions = this.state.WoodList?.map( wood => <option value={wood.value}>{wood.name}</option>);
 
     return (
       <div className="form-container">
           <h1>Detalhes da Madeira</h1>
 
-        <div className="form-group">
-					<label htmlFor="specie">Espécie de madeira</label>
-					<select name="specie" id="specie" onChange={inputChange('specie')} value={values.specie} class="form-control form-select" aria-label="Default select example" required>
-						<option value="" selected>Selecione uma espécie</option>
-						{renderOptions}
-            <option value="other">Outro</option>
-					</select>
-				</div>
-        { values.specie === "other" && (
+        <SelectField fieldName='specie' title='Espécie de madeira' inputChange={inputChange('specie')} 
+            values={values.specie} isRequired={false} defaultValue='Selecione uma espécie' options={this.state.WoodList} hasOther={true}/>
+
+        { 
+          values.specie === "other" && (
           <TextField fieldName="other" title="Outra" inputChange={inputChange('other')} value={values.other} />)
 				}
 
@@ -94,40 +81,26 @@ export class Form extends Component {
         <NumberField fieldName='height' title='Altura em mm (Opcional)' inputChange={inputChange('height')} values={values.height} 
             placeholder='ex.: 60' isRequired={false} message='As dimensões podem ser aproximadas'/>
 
-        <div className="form-group">
-          <label htmlFor="cutType">Tipo de Corte</label>
-          <select name="cutType" onChange={inputChange('cutType')} value={values.cutType} class="form-control form-select" aria-label="Default select example" id="cutType">
-            <option selected>Selecione um tipo de corte</option>
-              <option value="topo">Topo</option>
-              <option value="tangencial">Tangencial</option>
-              <option value="radial">Radial</option>
-          </select>
-        </div>
+        <SelectField fieldName='cutType' title='Tipo de Corte' inputChange={inputChange('cutType')} 
+            values={values.cutType} isRequired={false} defaultValue='Selecione um tipo de corte' options={getSelectOptions('cutType')}/>
 
         <NumberField fieldName='weight' title='Peso em gramas (Opcional)' inputChange={inputChange('weight')} values={values.weight} 
             placeholder='ex.: 200' isRequired={false} message='As dimensões podem ser aproximadas'/>
-					
-				<div className="form-group">
-					<label htmlFor="density">Densidade (Opcional)</label>
-					<select name="density" onChange={inputChange('density')} value={values.density} class="form-control form-select" aria-label="Default select example">
-						<option selected>Selecione uma densidade</option>
-							<option value="leve">Madeira Leve</option>
-							<option value="medio">Madeira Média</option>
-							<option value="pesada">Madeira Pesada</option>
-					</select>
-				</div>
+
+        <SelectField fieldName='density' title='Densidade (Opcional)' inputChange={inputChange('density')} 
+            values={values.density} isRequired={false} defaultValue='Selecione uma densidade' options={getSelectOptions('density')}/>
 
         <SelectField fieldName='cut' title='Corte (Opcional)' inputChange={inputChange('cut')} 
-            values={values.cut} isRequired={false} defaultValue='Selecione um tipo de corte' options={this.getDefaultOptions()}/>
+            values={values.cut} isRequired={false} defaultValue='Selecione um tipo de corte' options={getSelectOptions('default')}/>
 
         <SelectField fieldName='planer' title='Plaina (Opcional)' inputChange={inputChange('planer')} 
-            values={values.planer} isRequired={false} defaultValue='Selecione um tipo de plaina' options={this.getDefaultOptions()}/>
+            values={values.planer} isRequired={false} defaultValue='Selecione um tipo de plaina' options={getSelectOptions('default')}/>
 
         <SelectField fieldName='sandpaper' title='Lixa (Opcional)' inputChange={inputChange('sandpaper')} 
-            values={values.sandpaper} isRequired={false} defaultValue='Selecione um tipo de lixa' options={this.getDefaultOptions()}/>
+            values={values.sandpaper} isRequired={false} defaultValue='Selecione um tipo de lixa' options={getSelectOptions('default')}/>
 
         <SelectField fieldName='lathe' title='Torno (Opcional)' inputChange={inputChange('lathe')} 
-            values={values.lathe} isRequired={false} defaultValue='Selecione um tipo de torno' options={this.getDefaultOptions()}/>
+            values={values.lathe} isRequired={false} defaultValue='Selecione um tipo de torno' options={getSelectOptions('default')}/>
 
         <br />
         <Row className="btn-section">

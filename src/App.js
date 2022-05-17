@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import './App.css';
-import Initializer from './components/Initializer';
+import Initializer from './components/Initializer/Initializer';
 import IFPE from './resources/ifpe.png';
 import UFRPE from './resources/ufrpe.jpeg';
 

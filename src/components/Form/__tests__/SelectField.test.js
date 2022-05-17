@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import SelectField from '../SelectField';
+import SelectField from '../Fields/SelectField';
 
 test('renders SelectField component with the given props', () => {
     const options = [{ name:'test1', value:'test1' }, { name:'test2', value:'test2' }]
