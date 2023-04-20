@@ -26,7 +26,7 @@ export class Welcome extends Component {
         </div>
 
         <div className="btn-continue btn-section">
-          <button className="btn btn-primary" onClick={this.props.nextStep}>Continuar</button>
+          <button className="btn btn-primary" id="welcome-next" onClick={this.props.nextStep}>Continuar</button>
         </div>
       </div>
     )
