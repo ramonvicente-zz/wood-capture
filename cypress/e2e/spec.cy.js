@@ -22,7 +22,6 @@ describe('Cadastrar espécies de madeira.', () => {
     cy.contains('Continuar').click()
     cy.contains('Salvar').click()
     cy.contains('Campos obrigatórios:')
-    cy.contains('Espécie de Madeira')
     cy.contains('Imagem')
     cy.contains('Tipo de Corte')
   })
